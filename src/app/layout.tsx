@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   description: "Sistema para gerenciamento de consultório dentario.",
 };
 
-const roboto = Roboto({
+const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
   weight: ['300', '500', '700'],
-  variable: '--font-roboto',
+  variable: '--font-poppins',
 })
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${roboto.variable}`}>
+    <html lang="en" className={`${poppins.variable}`}>
       <body
         className={`antialiased`}
       >

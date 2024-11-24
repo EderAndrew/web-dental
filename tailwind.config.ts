@@ -68,6 +68,9 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
+      backgroundImage: {
+        "dental-cover": "url(/images/dentalbg.png)",
+      },
       fontFamily: {
         poppins: ["var(--font-poppins)"],
       },

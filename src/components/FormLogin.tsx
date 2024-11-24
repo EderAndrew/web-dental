@@ -11,8 +11,6 @@ import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 import Link from 'next/link'
 
-//import InputGeneric from './ui/InputGeneric'
-
 const FormLogin = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

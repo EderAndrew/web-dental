@@ -10,6 +10,7 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
 
 
 const FormLogin = () => {
@@ -23,10 +24,10 @@ const FormLogin = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values)
-    /* signIn("credentials", {
+    signIn("credentials", {
       ...values,
       callbackUrl: "/consultas"
-    }) */
+    })
   }
 
   return (

@@ -10,6 +10,7 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 import Link from 'next/link'
+import { signIn } from '../auth'
 
 const FormLogin = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -20,8 +21,16 @@ const FormLogin = () => {
     }
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+  const onSubmit = async(values: z.infer<typeof formSchema>) => {
+    try{
+      const user = await signIn("credentials", values)
+
+      console.log(user)
+    }catch(error){
+      if(error instanceof Error){
+        console.log(error.message)
+      }
+    }
   }
 
   return (

@@ -1,33 +1,45 @@
-/* eslint-disable react/jsx-no-undef */
 "use client"
 import React from 'react'
 import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form'
 import { useForm } from 'react-hook-form'
-import { formSchema } from '@/schemas/formSchema'
+import { SignupFormSchema } from '@/schemas/formSchema'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 import Link from 'next/link'
-import { signIn } from 'next-auth/react'
+import { signup } from '@/app/actions/auth'
+import { UserInterface } from '@/interfaces/userInterface'
+import { useRouter } from 'next/navigation'
 
 
 const FormLogin = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const router = useRouter()
+  const form = useForm<z.infer<typeof SignupFormSchema>>({
+    resolver: zodResolver(SignupFormSchema),
     defaultValues: {
       email: "",
       password: "",
     }
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
-    signIn("credentials", {
-      ...values,
-      callbackUrl: "/consultas"
-    })
+  const onSubmit = async(values: z.infer<typeof SignupFormSchema>) => {
+    try{
+      const user = await signup(values) as UserInterface
+
+      if(user.status !== 200){
+        alert(user.message)
+      }
+      sessionStorage.setItem("user", JSON.stringify(user.data.user))
+      sessionStorage.setItem("token", user.data.token)
+
+      router.push("/consultas")
+    }catch(error){
+      if(error instanceof Error){
+        console.log(error.message)
+      }
+    }
   }
 
   return (

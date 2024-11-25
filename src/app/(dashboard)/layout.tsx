@@ -1,3 +1,4 @@
+import MenuLayout from "@/components/MenuLayout";
 
 export default function DashboardLayout({
   children,
@@ -6,6 +7,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <div>
+      <MenuLayout />
       {children}
     </div>
   );

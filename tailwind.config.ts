@@ -22,7 +22,10 @@ export default {
           "500": "#518477",
           "700": "#465954",
         },
-        blue: "#56B8FF",
+        blue: {
+          DEFAULT: "#56B8FF",
+          "500": "#6CA9D5",
+        },
         pink: "#EEA8FD",
         orange: "#F9AB72",
         light: {

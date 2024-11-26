@@ -6,7 +6,7 @@ export const AppCardVisitors = () => {
     return (
         <div className="w-full h-52 bg-gradient-to-r from-sky-300 from-10% via-sky-400 via-30% to-brand-100 to-90% rounded-lg p-3">
             <div>
-                <span>Visitantes do dia</span>
+                <span>Pacientes do dia</span>
                 <h1 className="text-4xl">104</h1>
             </div>
             <div className="flex gap-8 h-full mt-5">

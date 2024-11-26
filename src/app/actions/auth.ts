@@ -1,6 +1,7 @@
 "use server";
 import { Signin } from "@/interfaces/signin";
 import { SignupFormSchema } from "@/schemas/formSchema";
+import { cookies } from "next/headers";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const signup = async (formData: Signin) => {
@@ -30,6 +31,9 @@ export const signup = async (formData: Signin) => {
     const data = await resp.json();
 
     if (!data) return { message: "Usuário e/ou senha incorretos!", status: 401, data: null };
+
+    const cookieStore = await cookies();
+    cookieStore.set("token", data.token);
 
     return { message: "Usuário logado com sucesso!", status: 200, data };
   } catch (error) {

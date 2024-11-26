@@ -15,8 +15,8 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-screen">
-        <div className="flex">
+      <main className="w-screen bg-slate-100">
+        <div className="flex items-center">
           <SidebarTrigger />
           <AppMenubar />
         </div>
